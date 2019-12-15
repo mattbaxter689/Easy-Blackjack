@@ -174,6 +174,8 @@ while True:
     #if the player's hasn't busted, play the dealers hand until the dealer reaches 17
     if player_hand.value <= 21:
         while dealer_hand.value < 17:
+            print("\n")
+            print("The dealer hits \n")
             hit(deck, dealer_hand)
 
             #show all of the cards
@@ -185,14 +187,15 @@ while True:
             
             elif dealer_hand.value > player_hand.value:
                 dealer_wins(player_hand, dealer_hand, player_chips)
-                show_all(player_hand, dealer_hand)
 
             elif dealer_hand.value < player_hand.value:
                 player_wins(player_hand, dealer_hand, player_chips)
-                show_all(player_hand, dealer_hand)
             
             else:
                 push(player_hand, dealer_hand)
+
+    #show the totals of both hands for both player and dealer
+    show_all(player_hand, dealer_hand)
 
     #Inform the player of their chip total
     print("\n Player's winnings stand at", player_chips.total)
@@ -202,7 +205,7 @@ while True:
 
     if new_game[0].lower() == 'y':
         playing = True
-        break
+        continue
 
     else:
         print("Thanks for playing!")
